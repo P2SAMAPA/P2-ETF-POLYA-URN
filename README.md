@@ -1,51 +1,18 @@
-# P2-ETF-POLYA-URN
+# Pólya Urn Contagion Engine
 
-## Description
+Models ETF performance as a Pólya urn process: each ETF is an urn that gains a ball when it outperforms the universe median (reinforcement). With a small probability, a ball is transferred from a randomly chosen ETF to the winner (cross‑sector contagion). The final ball proportion is the empirical outperformance frequency – a bullish signal.
 
-Welcome to the P2-ETF-POLYA-URN repository. This project explores the intersection of Exchange-Traded Funds (ETFs) and the Pólya urn model.
+- **Windows evaluated:** 63, 126, 252 days (best per ETF)
+- **Transfer probability:** 5% (configurable)
+- **Output:** top 3 ETFs per universe by highest ball proportion (most frequent outperformers)
+- **Dashboard:** shows top ETFs, best window, and full ranking tables
 
-## Getting Started
+Runs daily on GitHub Actions.
 
-### Prerequisites
+## Local execution
 
-- [List any required software, languages, or dependencies]
-
-### Installation
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/P2SAMAPA/P2-ETF-POLYA-URN.git
-   ```
-
-2. Navigate to the project directory:
-   ```bash
-   cd P2-ETF-POLYA-URN
-   ```
-
-3. [Add any additional installation steps]
-
-## Usage
-
-[Add usage instructions and examples here]
-
-## Features
-
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-[Specify your license here, e.g., MIT, Apache 2.0, etc.]
-
-## Author
-
-- **P2SAMAPA** - [Your GitHub Profile](https://github.com/P2SAMAPA)
-
-## Acknowledgments
-
-- [List any resources, inspirations, or contributors]
+```bash
+pip install -r requirements.txt
+export HF_TOKEN=<your_token>
+python trainer.py
+streamlit run streamlit_app.py
