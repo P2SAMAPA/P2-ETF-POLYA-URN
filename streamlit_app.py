@@ -24,7 +24,7 @@ st.sidebar.markdown("## 🏺 Pólya Urn")
 st.sidebar.markdown(f"**Run Date:** `{st.session_state.get('run_date', 'Not loaded')}`")
 st.sidebar.markdown(f"**Next Trading Day:** `{next_trading_day()}`")
 st.sidebar.markdown(f"**Transfer probability:** {config.TRANSFER_PROB}")
-st.sidebar.markdown("**Windows evaluated:** 63, 126, 252 days (best per ETF)")
+st.sidebar.markdown("**Windows evaluated:** 63, 126, 252, 504, 1008 days (best per ETF)")
 
 OUTPUT_REPO = config.OUTPUT_REPO
 HF_TOKEN = config.HF_TOKEN
