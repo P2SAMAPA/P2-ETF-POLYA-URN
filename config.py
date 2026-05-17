@@ -18,7 +18,7 @@ UNIVERSES = {
 }
 
 # Rolling windows (days)
-WINDOWS = [63, 126, 252, 504, 1008]
+WINDOWS = [63, 126, 252, 504, 1008, 2016]
 
 # Contagion / transfer probability
 TRANSFER_PROB = 0.05
