@@ -19,13 +19,13 @@ def main():
     for universe_name, tickers in config.UNIVERSES.items():
         print(f"\n=== Universe: {universe_name} (Pólya Urn) ===")
         returns = data_manager.prepare_returns_matrix(df, tickers)
-        if returns.empty or len(returns) < min(config.WINDOWS) + 10:
+        if returns.empty or len(returns) < max(config.WINDOWS) + 10:
             print("  Insufficient data")
             all_results[universe_name] = {"top_etfs": []}
             continue
 
-        best_per_etf = {}   # ticker -> (best_score, best_window)
-        window_results = {} # win -> scores dict
+        best_per_etf = {}
+        window_results = {}
 
         for win in config.WINDOWS:
             if len(returns) < win:
@@ -45,14 +45,12 @@ def main():
             all_results[universe_name] = {"top_etfs": []}
             continue
 
-        # Sort by best score descending
+        # Store full scores for all ETFs
+        full_scores = {ticker: {"score": score, "best_window": win} for ticker, (score, win) in best_per_etf.items()}
         sorted_etfs = sorted(best_per_etf.items(), key=lambda x: x[1][0], reverse=True)
-        top_etfs = []
-        full_scores = {}
-        for ticker, (score, win) in sorted_etfs[:config.TOP_N]:
-            top_etfs.append({"ticker": ticker, "ball_proportion": float(score), "best_window": win})
-            full_scores[ticker] = {"score": float(score), "best_window": win}
-        print(f"  Top 3 ETFs by ball proportion: {[e['ticker'] for e in top_etfs]}")
+        top_etfs = [{"ticker": ticker, "ball_proportion": float(score), "best_window": win} for ticker, (score, win) in sorted_etfs[:config.TOP_N]]
+
+        print(f"  Top 3 ETFs: {[e['ticker'] for e in top_etfs]}")
         all_results[universe_name] = {
             "top_etfs": top_etfs,
             "full_scores": full_scores,
