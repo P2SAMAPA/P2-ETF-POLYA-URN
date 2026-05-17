@@ -18,9 +18,9 @@ UNIVERSES = {
 }
 
 # Rolling windows (days)
-WINDOWS = [63, 126, 252]
+WINDOWS = [63, 126, 252, 504, 1008]
 
 # Contagion / transfer probability
-TRANSFER_PROB = 0.05   # when an ETF outperforms, with this probability it steals a ball from a random other ETF
+TRANSFER_PROB = 0.05
 
 TOP_N = 3
