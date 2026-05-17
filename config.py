@@ -1,0 +1,26 @@
+import os
+
+HF_TOKEN = os.environ.get("HF_TOKEN", "")
+DATA_REPO = "P2SAMAPA/fi-etf-macro-signal-master-data"
+OUTPUT_REPO = "P2SAMAPA/p2-etf-polya-urn-results"
+
+UNIVERSES = {
+    "FI_COMMODITIES": ["TLT", "VCIT", "LQD", "HYG", "VNQ", "GLD", "SLV"],
+    "EQUITY_SECTORS": [
+        "SPY", "QQQ", "XLK", "XLF", "XLE", "XLV", "XLI", "XLY",
+        "XLP", "XLU", "GDX", "XME", "IWF", "XSD", "XBI", "IWM", "IWD", "IWO"
+    ],
+    "COMBINED": [
+        "TLT", "VCIT", "LQD", "HYG", "VNQ", "GLD", "SLV",
+        "SPY", "QQQ", "XLK", "XLF", "XLE", "XLV", "XLI", "XLY",
+        "XLP", "XLU", "GDX", "XME", "IWF", "XSD", "XBI", "IWM", "IWD", "IWO"
+    ]
+}
+
+# Rolling windows (days)
+WINDOWS = [63, 126, 252]
+
+# Contagion / transfer probability
+TRANSFER_PROB = 0.05   # when an ETF outperforms, with this probability it steals a ball from a random other ETF
+
+TOP_N = 3
