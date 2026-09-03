@@ -2,7 +2,7 @@ name: Daily Pólya Urn Run
 
 on:
   schedule:
-    - cron: '15 23 * * 1-6'
+    - cron: '15 22 * * 1-6'
   workflow_dispatch:
 
 jobs:
